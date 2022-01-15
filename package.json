@@ -1,0 +1,19 @@
+{
+  "name": "dok-file-utils",
+  "version": "1.0.0",
+  "description": "Simple utility for loading files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacklehamster/dok-file-utils.git"
+  },
+  "author": "Jack Le Hamster",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jacklehamster/dok-file-utils/issues"
+  },
+  "homepage": "https://github.com/jacklehamster/dok-file-utils#readme"
+}
