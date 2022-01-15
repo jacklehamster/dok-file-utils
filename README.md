@@ -28,6 +28,16 @@ In `package.json`:
 
 ```
 
+In `browserify/main.js`:
+```
+const { FileUtils, ImageLoader } = require('dok-file-utils');
+
+module.exports = {
+  FileUtils,
+  ImageLoader,
+};
+```
+
 ## Components
 
 ### FileUtils
