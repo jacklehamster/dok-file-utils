@@ -2,7 +2,7 @@
   "name": "dok-file-utils",
   "version": "1.0.3",
   "description": "Simple utility for loading files",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "mocha src/index.test.js"
   },
