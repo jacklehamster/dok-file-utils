@@ -1,0 +1,33 @@
+<script>module = {}</script>
+<script src="https://unpkg.com/dok-file-utils/src/image-loader.js"></script>
+
+<button onClick="showImage('https://unpkg.com/dok-file-utils/icon.png')">showImage('https://unpkg.com/dok-file-utils/icon.png')</button>
+<button onClick="showImage('https://raw.githubusercontent.com/jacklehamster/dok-gamelib/master/icon.png')">showImage('https://raw.githubusercontent.com/jacklehamster/dok-gamelib/master/icon.png')</button>
+<script id="code-javascript">
+	const imageLoader = new ImageLoader({
+		'https://unpkg.com/dok-file-utils/icon.png': true,
+		'https://raw.githubusercontent.com/jacklehamster/dok-gamelib/master/icon.png': true,
+	});
+
+	function showImage(imageUrl) {
+		imageLoader.loadImage(imageUrl)
+		.then(image => document.getElementById("output").src = image.src);
+	}
+</script>
+<hr>
+Using imageLoader to load images, ensuring each image is loaded only once.
+
+Note: The loadImage method returns the image. The urls need to be passed in order for the URL to be reusable, but each use will extract from the blob and not make another network request.
+<hr>
+
+Code:
+<pre id="code" style="border: 1px solid black; padding: 5px"></pre>
+<script>
+	document.getElementById("code").textContent = document.getElementById("code-javascript").textContent;
+</script>
+Result:
+<div>
+	<img id="output" style="border: 1px solid black; padding: 5px"></img>
+</div>
+
+<hr>

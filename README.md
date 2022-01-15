@@ -1,10 +1,22 @@
-# dok-file-utils
+# ![](icon.png) dok-file-utils
 Dobuki's file utils. Just a simple way to load files
 
 Those are browser APIs exposed as npm modules.
 
 
 ## Setup
+
+### Directly in web page
+
+Include the scripts in html as follow:
+```
+<script src="https://unpkg.com/dok-file-utils/src/file-utils.js"></script>
+<script src="https://unpkg.com/dok-file-utils/src/image-loader.js"></script>
+```
+
+
+### Through NPM
+
 
 Add to `package.json`:
 ```
@@ -67,3 +79,7 @@ const image = await imageLoader.load("image.png");
 const cursor = await imageLoader.load("assets/cursor.png");
 // In this case, cursor.url is the URL of a block that can be reused. This is useful when using a changing cursor in CSS that points to an image, avoiding repeated load of that image.
 ```
+
+### Demo
+
+[demo](https://jacklehamster.github.io/dok-file-utils/)

@@ -56,6 +56,8 @@ class FileUtils {
     }
 }
 
-module.exports = {
-    FileUtils,
-};
+if (typeof module !== "undefined") {
+    module.exports = {
+        FileUtils,
+    };
+}

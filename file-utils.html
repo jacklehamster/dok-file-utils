@@ -1,0 +1,26 @@
+<script>module = {}</script>
+<script src="https://unpkg.com/dok-file-utils/src/file-utils.js"></script>
+
+<button onClick="showFile('package.json')">showFile('package.json')</button>
+<button onClick="showFile('README.md')">showFile('README.md')</button>
+<script id="code-javascript">
+	const fileUtils = new FileUtils();
+
+	function showFile(filename) {
+		fileUtils.load(`https://unpkg.com/dok-file-utils/${filename}`)
+		.then(data => data instanceof Blob ? data.text() : JSON.stringify(data, null, "  "))
+		.then(data => document.getElementById("output").textContent = data);
+	}
+</script>
+<hr>
+Using fileUtils to load files, ensuring each file is loaded only once.
+<hr>
+Code:
+<pre id="code" style="border: 1px solid black; padding: 5px"></pre>
+<script>
+	document.getElementById("code").textContent = document.getElementById("code-javascript").textContent;
+</script>
+Result:
+<pre id="output" style="border: 1px solid black; padding: 5px"></pre>
+
+<hr>

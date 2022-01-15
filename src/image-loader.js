@@ -75,6 +75,8 @@ class ImageLoader {
 	}
 }
 
-module.exports = {
-    ImageLoader,
-};
+if (typeof module !== "undefined") {
+	module.exports = {
+    	ImageLoader,
+	};
+}
