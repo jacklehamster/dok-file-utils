@@ -3,6 +3,9 @@ Dobuki's file utils. Just a simple way to load files
 
 Those are browser APIs exposed as npm modules.
 
+[![CodeQL](https://github.com/jacklehamster/dok-file-utils/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/jacklehamster/dok-file-utils/actions/workflows/codeql-analysis.yml)
+
+[![pages-build-deployment](https://github.com/jacklehamster/dok-file-utils/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/jacklehamster/dok-file-utils/actions/workflows/pages/pages-build-deployment)
 
 ## Setup
 
