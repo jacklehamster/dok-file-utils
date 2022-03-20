@@ -3,9 +3,11 @@
    "compilerOptions": {
        "module": "commonjs",
        "declaration": true,
-       "outDir": "lib/"
+       "outDir": "lib/",
+       "allowJs": true
    },
+   "declaration": true,
    "files": [
-       "./src/index.ts"
+       "./src/index.js"
    ]
 }
