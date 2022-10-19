@@ -12,20 +12,20 @@ MockXhr.onSend = (xhr) => {
   xhr.respond(200, responseHeaders, response);
 };
 
-describe('FileUtils', function() {
-  it('should load from FileUtils', async function() {
-  	const fileUtils = new FileUtils(MockXhr);
+describe('FileUtils', function () {
+  it('should load from FileUtils', async function () {
+    const fileUtils = new FileUtils(MockXhr);
     const data = await fileUtils.load("file.json");
     expect(data.success).to.be.true;
-    expect(fileUtils.fileStock["file.json"].data).to.equal(data);
-    expect(fileUtils.fileStock["file.json"].url).to.equal("file.json");
-    expect(fileUtils.fileStock["file.json"].progress).to.equal(1);
-    expect(fileUtils.fileStock["file.json"].loaded).to.be.true;
+    expect(fileUtils.fileStock["file.json|json"].data).to.equal(data);
+    expect(fileUtils.fileStock["file.json|json"].url).to.equal("file.json");
+    expect(fileUtils.fileStock["file.json|json"].progress).to.equal(1);
+    expect(fileUtils.fileStock["file.json|json"].loaded).to.be.true;
   });
 });
 
-describe('ImageLoader', function() {
-  it('should load from ImageLoader', async function() {
+describe('ImageLoader', function () {
+  it('should load from ImageLoader', async function () {
     const Image = class {
       addEventListener(type, callback) {
         expect(type).to.equal("load");
@@ -33,7 +33,7 @@ describe('ImageLoader', function() {
       }
     };
     globalThis.URL.createObjectURL = () => "<url>";
-    globalThis.URL.revokeObjectURL = () => {};
+    globalThis.URL.revokeObjectURL = () => { };
 
 
     console.log(URL);
