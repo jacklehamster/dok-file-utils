@@ -1,6 +1,6 @@
 {
   "name": "dok-file-utils",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Simple utility for loading files",
   "main": "src/index.js",
   "types": "./lib/index.d.ts",
