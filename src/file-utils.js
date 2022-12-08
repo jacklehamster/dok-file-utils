@@ -4,6 +4,10 @@ class FileUtils {
         this.fileStock = {};
     }
 
+    setOverride(override) {
+        this.override = override;
+    }
+
     async preload(...urls) {
         return Promise.all(urls.map(async url => {
             return await this.load(url);
@@ -11,6 +15,9 @@ class FileUtils {
     }
 
     async load(url, responseType) {
+        if (this.override?.[url]) {
+            return this.override?.[url];
+        }
         return !url ? Promise.resolve(null) : new Promise((resolve, reject) => {
             const realResponseType = responseType || (url.match(/.(json)$/i) ? "json" : 'blob');
             const tag = [url, realResponseType].join("|");
