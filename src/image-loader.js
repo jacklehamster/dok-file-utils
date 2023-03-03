@@ -6,7 +6,10 @@ class ImageLoader {
 		this.imageStock = {};
 	}
 
-	async getBlobUrl(url) {
+	async getBlobUrl(url, forcePreserve) {
+		if (forcePreserve) {
+			this.preserve[url] = true;
+		}
 		await this.loadImage(url);
 		return this.preserve[url] ? this.imageStock[url]?.img.src : null; 
 	}
@@ -40,7 +43,7 @@ class ImageLoader {
 
 			    req.addEventListener('load', e => {
 			    	if (req.status === 200) {
-						if (url.match(/.(jpg|jpeg|png|gif)$/i)) {
+						if (url.match(/.(jpg|jpeg|png|gif|svg)$/i)) {
 							const imageURL = URL.createObjectURL(req.response);
 							const { img } = this.imageStock[url];
 							img.addEventListener("load", () => {

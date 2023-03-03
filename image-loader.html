@@ -1,12 +1,14 @@
 <script>module = {}</script>
-<script src="https://unpkg.com/dok-file-utils/src/image-loader.js"></script>
+<script src="src/image-loader.js"></script>
 
-<button onClick="showImage('https://unpkg.com/dok-file-utils/icon.png')">showImage('https://unpkg.com/dok-file-utils/icon.png')</button>
+<button onClick="showImage('icon.png')">showImage('icon.png')</button>
 <button onClick="showImage('https://raw.githubusercontent.com/jacklehamster/dok-gamelib/master/icon.png')">showImage('https://raw.githubusercontent.com/jacklehamster/dok-gamelib/master/icon.png')</button>
+<button onClick="showImage('gear.svg')">showImage('gear.svg')</button>
 <script id="code-javascript">
 	const imageLoader = new ImageLoader({
-		'https://unpkg.com/dok-file-utils/icon.png': true,
+		'icon.png': true,
 		'https://raw.githubusercontent.com/jacklehamster/dok-gamelib/master/icon.png': true,
+		'gear.svg': true,
 	});
 
 	function showImage(imageUrl) {
@@ -27,7 +29,7 @@ Code:
 </script>
 Result:
 <div>
-	<img id="output" style="border: 1px solid black; padding: 5px"></img>
+	<img src="icon.png" alt="image" id="output" style="border: 1px solid black; padding: 5px"></img>
 </div>
 
 <hr>
