@@ -2,10 +2,16 @@ class FileUtils {
     constructor(XMLHttpRequest) {
         this.XMLHttpRequest = XMLHttpRequest || globalThis.XMLHttpRequest;
         this.fileStock = {};
+        this.override = null;
+        this.extensionProcessors = {};
     }
 
     setOverride(override) {
         this.override = override;
+    }
+
+    addExtensionProcessor(extension, processor) {
+        this.extensionProcessors[extension] = processor;
     }
 
     async preload(...urls) {
@@ -19,7 +25,9 @@ class FileUtils {
             return this.override?.[url];
         }
         return !url ? Promise.resolve(null) : new Promise((resolve, reject) => {
-            const realResponseType = responseType || (url.match(/.(json)$/i) ? "json" : 'blob');
+            const extension = url.split(".").pop();
+            const extensionProcessor = this.extensionProcessors[extension];
+            const realResponseType = responseType ?? extensionProcessor?.responseType ?? (url.match(/.(json)$/i) ? "json" : 'blob');
             const tag = [url, realResponseType].join("|");
             if (this.fileStock[tag]) {
                 const { data, loaded, onLoadListeners } = this.fileStock[tag];
@@ -39,9 +47,9 @@ class FileUtils {
                 req.open('GET', url);
                 req.responseType = realResponseType;
 
-                req.addEventListener('load', e => {
+                req.addEventListener('load', async (e) => {
                     if (req.status === 200) {
-                        const data = req.response;
+                        const data = extensionProcessor?.process ? await extensionProcessor.process(req.response) : req.response;
                         this.fileStock[tag].progress = 1;
                         this.fileStock[tag].loaded = true;
                         this.fileStock[tag].data = data;

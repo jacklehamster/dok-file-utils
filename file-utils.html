@@ -1,13 +1,20 @@
 <script>module = {}</script>
-<script src="https://unpkg.com/dok-file-utils/src/file-utils.js"></script>
+<script src="https://unpkg.com/js-yaml"></script>
+<script src="src/file-utils.js"></script>
 
 <button onClick="showFile('package.json')">showFile('package.json')</button>
 <button onClick="showFile('README.md')">showFile('README.md')</button>
+<button onClick="showFile('.github/workflows/codeql-analysis.yml')">showFile('codeql-analysis.yml')</button>
 <script id="code-javascript">
 	const fileUtils = new FileUtils();
 
+	fileUtils.addExtensionProcessor("yml", {
+		responseType: "text",
+		process: (data) => jsyaml.load(data),
+	});
+
 	function showFile(filename) {
-		fileUtils.load(`https://unpkg.com/dok-file-utils/${filename}`)
+		fileUtils.load(`${filename}`)
 		.then(data => data instanceof Blob ? data.text() : JSON.stringify(data, null, "  "))
 		.then(data => document.getElementById("output").textContent = data);
 	}
